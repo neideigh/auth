@@ -2,6 +2,8 @@ from pathlib import Path
 import django_heroku
 import dj_database_url
 from decouple import config
+import os
+import psycopg2
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'userauthwebsite',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +70,16 @@ WSGI_APPLICATION = 'userauth.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'd19oj38sus57do',
+    'USER': 'clxrftdxumedop',
+    'PASSWORD': '4723aadccfae93a69b3d07d3000ee13bcd656fadefe9c7b3c45cd15cccc7247e',
+    'HOST': 'ec2-174-129-199-54.compute-1.amazonaws.com',
+    'PORT': '5432',
+}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
