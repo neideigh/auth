@@ -1,0 +1,23 @@
+{% extends 'authenticate/base.html' %}
+{% block content %}
+
+<h2 class="text-center">Edit profile</h2>
+
+<form method="POST" action="{% url 'edit_profile' %}">
+    {% csrf_token %}
+
+    {% if form.errors %}
+        <p>Your form has errors</p>
+    {% endif %}
+
+    {{ form.as_p }}
+
+
+    <input type="Submit" value="Edit Profile" class="btn btn-secondary"></br></br>
+    <p><small><a href="{% url 'change_password' %}">click here</a> to change your password</small></p>
+
+</form>
+
+
+
+{% endblock %}
